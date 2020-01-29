@@ -142,6 +142,7 @@ $( document ).ready(function() {
         return false; 
     });
     
+    
     $( "#divAllThoughts" ).on('click', '.deleteReply', function() {
         
         var r = confirm("Do you want to delete?");
@@ -187,6 +188,14 @@ $( document ).ready(function() {
             }
         });
         
+    });
+
+    $(".btnShareCmnt").click(function(){
+        var objSocialShareUrls = $(this).data('socialshareurls') ;
+        $("#modalShareCmnt .fa-facebook-square").attr('href', objSocialShareUrls.facebook);
+        $("#modalShareCmnt .fa-twitter-square").attr('href', objSocialShareUrls.twitter);
+        $("#modalShareCmnt .fa-whatsapp-square").attr('href', objSocialShareUrls.whatsapp);
+        $("#modalShareCmnt").modal()
     });
 });
 

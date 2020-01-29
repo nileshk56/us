@@ -2,7 +2,6 @@
 
 <div class="row">
     <div class="col-md-3 text-center mb-3">
-
           <div class="card ">
           <img class="card-img-top" src="<?php echo $_SESSION['user']['image'] ? $_SESSION['user']['image'] : base_url("public/images/nouser.png") ?>" alt="Card image" style="width:100%">
           <div class="card-body">
@@ -11,7 +10,7 @@
               <?php } ?>
               <h4 class="card-title"><?php echo $_SESSION['user']['first_name'], " ", $_SESSION['user']['last_name'] ?></h4>
               <p class="card-text">Share profile on social network and ask your friends, colleague, relatives etc... to give your review anonymously</p>
-              <button href="#" class="btn btn-primary" data-toggle="popover" data-html="true" data-content='<a href="<?php echo $shareUrl['profile']['facebook'] ?>" class="fab fa-facebook-square fa-2x" target="_blank"></a> &nbsp; <a href="<?php echo $shareUrl['profile']['twitter'] ?>" class="fab fa-twitter-square fa-2x" target="_blank"></a> &nbsp; <a href="<?php echo $shareUrl['profile']['whatsapp'] ?>" data-action="share/whatsapp/share" class="fab fa-whatsapp-square fa-2x"></a>'>Share Profile</button>
+              <button href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalShareProfile">Share Profile</button>
           </div>
           </div>
 
@@ -34,7 +33,7 @@
               <em class="text-muted small"><?php echo date('M j Y g:i A', strtotime($thought['created']))  ?></em>
               <br>
               <br>
-              <?php if($thought['is_published'] == 0) { ?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="publishThought">Publish</a><?php } else { ?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="unpublishThought">Unpublish</a><?php } ?> &nbsp; <a href="#">Share</a> &nbsp; <?php if(!$thought['comment']) {?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="replyThought">Reply</a><?php } ?> &nbsp; <a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="deleteThought">Delete</a>  
+              <?php if($thought['is_published'] == 0) { ?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="publishThought">Publish</a><?php } else { ?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="unpublishThought">Unpublish</a><?php } ?> &nbsp; <a href="#" class="btnShareCmnt" data-socialshareurls='<?php echo $thought['socialShareUrls'] ?>'>Share</a> &nbsp; <?php if(!$thought['comment']) {?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="replyThought">Reply</a><?php } ?> &nbsp; <a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="deleteThought">Delete</a>  
               <br/>
               <?php if($thought['comment']) {?>
               
@@ -76,25 +75,47 @@
       </div> 
 </div>
 
-<div id="modalVoteDetails" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<div id="modalShareProfile" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
+        <h4 class="modal-title">Share Your Profile </h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">People who voted</h4>
       </div>
       <div class="modal-body" id="modalVoteDetailsBody">
-        <p>Some text in the modal.</p>
+      <a href="<?php echo $shareUrl['profile']['facebook'] ?>" class="fab fa-facebook-square fa-3x" target="_blank"></a> &nbsp; <a href="<?php echo $shareUrl['profile']['twitter'] ?>" class="fab fa-twitter-square fa-3x" target="_blank"></a> &nbsp; <a href="<?php echo $shareUrl['profile']['whatsapp'] ?>" class="fab fa-whatsapp-square fa-3x"></a>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
     </div>
 
   </div>
 </div>
+
+<div id="modalShareCmnt" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Share Your Comment </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" id="modalVoteDetailsBody">
+      <a href="" class="fab fa-facebook-square fa-3x" target="_blank"></a> &nbsp; <a href="" class="fab fa-twitter-square fa-3x" target="_blank"></a> &nbsp; <a href="" class="fab fa-whatsapp-square fa-3x"></a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <div id="modalUPP" class="modal fade" role="dialog">
   <div class="modal-dialog modal-dialog-centered">
 
@@ -118,7 +139,7 @@
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
     </div>
 

@@ -1,6 +1,6 @@
 <div class="row ">
-    <div class="col-md-12 text-center mt-5  shadow-sm p-md-2 mb-2 border">
-        SaidUnsaid@2020
+    <div class="col-md-12 text-center p-2 mt-5 mb-0 p-md-2 border text-muted">
+        Unsaidstuff.com@2020
     </div>
   </div>
 

@@ -18,7 +18,7 @@ class Home extends CI_Controller {
 		$data = $this->security->xss_clean($this->input->post());
 		$data['status'] = "0";
 		$data['first_name'] = ucfirst($data['first_name']);
-		$data['last_name'] = ucfirst($data['first_name']);
+		$data['last_name'] = ucfirst($data['last_name']);
 
 		//check whether user exists or not
 		$query = $this->db->query("SELECT * FROM users where email = '" . $data['email'] . "'");
@@ -81,8 +81,19 @@ class Home extends CI_Controller {
 		$query = $this->db->query($qr);
 		$postData = $query->result_array(); 
 		
-		foreach($postData as $post) {
+		foreach($postData as $key => $post) {
 			array_push($arrThoughtIds, $post['thought_id']);
+
+			$shareURLCmnt = urlencode(base_url('user/'.$_SESSION['user']['user_id'].'/review/'.$post['thought_id']));
+			$shareTextprofile = "This is what people think about me. Checkout the anonymous comment posted on my profile...";
+			$socialShareUrls = array (
+				"facebook" 	=> "https://www.facebook.com/sharer/sharer.php?u=$shareURLCmnt",
+				"twitter" 	=> "https://twitter.com/intent/tweet?url=$shareURLCmnt&text=$shareTextprofile",
+				"whatsapp"	=> "whatsapp://send?text=".urlencode($shareTextprofile)."%20$shareURLCmnt"
+			); 
+			$strSocialUrls = json_encode($socialShareUrls);
+			$postData[$key]['socialShareUrls'] = $strSocialUrls; 
+
 		}
 
 		/*$qr = "select object_id, count(like_id) as like_count from likes where object_id in ( " . implode("," ,$arrThoughtIds) . " ) GROUP BY object_id";
@@ -103,7 +114,7 @@ class Home extends CI_Controller {
 		$shareTextprofile = "Let me know what do you think about myself by giving me anonymous review";
 		$data['shareUrl']['profile']['twitter'] = "https://twitter.com/intent/tweet?url=$shareURLprofile&text=$shareTextprofile";
 		$data['shareUrl']['profile']['facebook'] = "https://www.facebook.com/sharer/sharer.php?u=$shareURLprofile";
-		$data['shareUrl']['profile']['whatsapp'] = "whatsapp://send?text=$shareTextprofile $shareURLprofile";
+		$data['shareUrl']['profile']['whatsapp'] = "whatsapp://send?text=".urlencode($shareTextprofile)."%20$shareURLprofile";
 
 		$this->load->view('head');
 		$this->load->view('header2');

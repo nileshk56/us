@@ -1,7 +1,7 @@
 <input type="hidden" id="user_id" value="<?php echo $userId ?>" />
 
 <div class="row">
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 text-center mb-3">
 
             <div class="card ">
             <img class="card-img-top" src="<?php echo $userData['image'] ? $userData['image'] : base_url("public/images/nouser.png") ?>" alt="<?php echo $userData['first_name'], " ", $userData['last_name']?>" style="width:100%">

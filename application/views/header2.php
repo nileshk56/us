@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row shadow-sm pb-md-4 pt-md-4 mb-4 border">
-        <div class="col-md-3 text-center  ">
+  <div class="row shadow-sm pb-2 pt-3 mb-3 border-bottom">
+        <div class="col-lg-3 text-center mb-2">
             <h3>Unsaidstuff</h3>
         </div>
         
-        <div class="col-md-5 text-right">
+        <div class="col-lg-5 mb-2">
             <form class="form-inline" action="<?php echo base_url('home/search') ?>">
-                <div class="input-group col-md-12 pl-md-0">
+                <div class="input-group col-12 pl-md-0">
                     <input type="text" class="form-control" placeholder="Search by Firstname Lastname" name="search">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit"><i class="fas fa-search fa-lg"></i></button>
@@ -14,8 +14,8 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-4">
-            <ul class="nav justify-content-end">
+        <div class="col-lg-4 mb-2">
+            <ul class="nav justify-content-center">
             <?php if(!empty($_SESSION['user'])) { ?>
             
                 <li class="nav-item">

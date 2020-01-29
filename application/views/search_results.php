@@ -9,11 +9,11 @@
                 foreach($userData as $user) {
             ?>
             <div class="row">
-                <div class="col-md-2">
-                    <img src="<?php echo $user['image'] ? $user['image'] : base_url()."public/images/nouser.png"  ?>" class="img-fluid rounded" alt="<?php echo $user['first_name'], " ", $user['last_name'] ?>" width="100px" >
+                <div class="col-xs-2">
+                    <img src="<?php echo $user['image'] ? $user['image'] : base_url()."public/images/nouser.png"  ?>" class="img-fluid rounded" alt="<?php echo $user['first_name'], " ", $user['last_name'] ?>" width="75px" >
                 </div>
-                <div class="col-md">
-                <h3><a href="<?php echo base_url('user/'.$user['user_id']) ?>"><?php echo $user['first_name'], " ", $user['last_name'] ?></a></h3>
+                <div class="col-xs">
+                <h5> &nbsp; <a href="<?php echo base_url('user/'.$user['user_id']) ?>" class="text-body"><?php echo $user['first_name'], " ", $user['last_name'] ?></a></h5>
                 </div>
             </div>
             <hr/>

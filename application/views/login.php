@@ -1,15 +1,17 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-5 text-justify" style="padding-top:50px">
-            <h4>
-                <ul style="list-style-type:square">
-                    <li class="mb-2">See what other people think about you by taking your anonymous review</li>
-                    <li class="mb-2">Reviews are completely private, no one can see them but you can publish good reviews on your profile page. Others will see only published reviews on your profile page.</li>
-                    <li class="mb-2">You can reply on review</li>
-                    <li class="mb-2">People will criticize you, abuse you, blame you but use that all feedback to improve yourself</li>
-                    <li>Share your profile on social network and ask your friends, colleague, relatives to give your review anonymously</li>
-                </ul>
+        <div class="col-md-5 text-left" style="padding-top:50px">
+            <h1>What is Unsaidstuff</h1>
+            <br>
+            <h4><small>
+            <ul class="list-unstyled">
+                <li class="mb-3 text-justify">See what other people think about you by taking your anonymous review</li>
+                <li class="mb-3 text-justify">Reviews are completely private, no one can see them but you can publish good reviews on your profile. Others will see only published reviews on your profile.</li>
+                <li class="mb-3 text-justify">You can reply on review</li>
+                <li class="mb-3 text-justify">People will criticize you, abuse you, blame you but use that all feedback to improve yourself</li>
+                <li class="text-justify">Share your profile on social network and ask your friends, colleague, relatives to give your review anonymously</li>
+            </ul></small>
             </h4>
         </div>
         <div class="col-md-1">&nbsp;</div>
@@ -65,8 +67,8 @@
     </div>
 
     <div class="row ">
-        <div class="col-md-12 text-center mt-5  shadow-sm p-md-2 mb-2 border">
-            SaidUnsaid@2020
+        <div class="col-md-12 text-center p-2 mt-5 mb-0 p-md-2 border-top text-muted">
+            Unsaidstuff.com@2020
         </div>
     </div>
 </div>
