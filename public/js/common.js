@@ -21,7 +21,7 @@ $( document ).ready(function() {
                 var obj = JSON.parse(data);
                 
                 $("#modalMSGTitle").html("Success");
-                $("#modalMSGBody").html("Your comment is submitted anonymously. It will be shown on user profile once user publish it.");
+                $("#modalMSGBody").html("Your comment is submitted anonymously.");
                 $("#modalMSG").modal();
                 
                 $("#frmAddThought")[0].reset();
@@ -38,31 +38,7 @@ $( document ).ready(function() {
 
     });
 
-   /* //$( ".divTags button" ).click(function() {
-    $( ".btn-vote" ).click(function() {
-        console.log("clicked")
-        var tagId = $(this).data('tagid');
-        var tagIdCount = parseInt($("#badgeTagCount_" + tagId).html());
-        var tagIdCount = parseInt($(this +" .badge").html());
-        tagIdCount++;
-        console.log(tagIdCount);
-        return false;
-        $.ajax({
-            url : HOST + "user/add_vote",
-            type : 'post',
-            data : { tag_id: tagId, to_user_id: $("#user_id").val() },
-            success : function(data) {
-                $("#badgeTagCount_" + tagId).html(tagIdCount);
-                $(this).removeAttr("href");
-                $(this).addClass("text-muted");
-            }, 
-            error : function(data) {
-                var obj = JSON.parse(data);
-            }
-        });   
-    });*/
-
-    //$( ".btn-vote" ).click(function() {
+   
     $( ".divTags" ).on('click', '.btn-vote', function() {
         var tagId = $(this).data('tagid');
         var tagIdCount = parseInt($(this).children(".badge").html());
@@ -223,108 +199,3 @@ function getVoteDetails(tagId, userId) {
     }); 
     return false;
 }
-/*$( document ).ready(function() {
-    $( "#txtSearch" ).focus(function() {
-       $("#searchModal").modal()
-    });
-
-    $( ".post_comment" ).click(function() {
-        $("#modalPostComment").modal()
-    });
-
-    $( "#link_post_comment" ).click(function() {
-        $("#modalPostComment").modal()
-    });
-    
-
-    /*$("#frm_post_comment").submit(function(e) {
-
-        //prevent Default functionality
-        e.preventDefault();
-
-        //get the action-url of the form
-        var actionurl = e.currentTarget.action;
-    
-        //do your own request an handle the results
-        $.ajax({
-                url: actionurl,
-                type: 'post',
-                data: $("#frm_post_comment").serialize(),
-                success: function(data) {
-                    console.log("Ajax Post", actionurl, data);
-                }
-        });
-
-    });
-    
-});
-
-function postVote(object_id, type, vote_type) {
-    
-    var url = HOST + "home/post_vote?post_type="+type+"&object_id="+object_id+"&vote_type="+vote_type;
-    $.get(url, function(data, status){
-        var count = parseInt($("#"+type+"fakeVoteCount_"+object_id).html());
-        var countNF = parseInt($("#"+type+"notfakeVoteCount_"+object_id).html());
-
-        if(vote_type) {
-            countNF++;
-        } else {
-            count++;
-        }
-        
-        $("#div"+type+"Fake_"+object_id).html("<h4>"+(count) +" Fake</h4>");
-        $("#div"+type+"Fake_"+object_id).addClass("text-muted");
-
-        $("#div"+type+"NotFake_"+object_id).html("<h4>"+(countNF) +" Not Fake</h4>");
-        $("#div"+type+"NotFake_"+object_id).addClass("text-muted");
-    });
-    return false;
-}
-
-function commentVote(object_id, type, vote_type) {
-    
-    var url = HOST + "home/post_vote?post_type="+type+"&object_id="+object_id+"&vote_type="+vote_type;
-    $.get(url, function(data, status){
-        var countU = parseInt($("#"+type+"UpvoteCount_"+object_id).html());
-        var countD = parseInt($("#"+type+"DownvoteCount_"+object_id).html());
-
-        if(vote_type) {
-            countU++;
-        } else {
-            countD++;
-        }
-        
-        $("#div"+type+"Votes_"+object_id).html(countU +" Upvote " + " &nbsp; " + countD + " Downvote");
-        
-    });
-    return false;
-}
-
-function validateForm(obj) {
-    var msg = '';
-    var strTags = $("#"+obj+" #tags").val().trim();
-    
-    if(strTags[0] != "#") {
-        msg = "HashTag should start with #";
-    }
-    strTags = strTags.substr(1);
-    var arrTags = strTags.split("#");
-    for(var i=0; i<arrTags.length; i++) {
-        var tag = arrTags[i].trim();
-        if(tag.match(/^[\w\.()\-,;_&*!@$%]*$/)) {
-            arrTags[i] = tag;
-        } else {
-            msg = "Invalid HashTags, mulitiple hashtags should be separated by space";
-            break;
-        }
-    }
-    if(msg) {
-        $("#frmPostErrMsg").show();
-        $("#spnPostErrMsg").html(msg);
-        return false;
-    }
-
-    $("#"+obj+" #post_tags").val(arrTags.join(','));
-    return true;
-}*/
-

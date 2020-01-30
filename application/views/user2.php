@@ -1,7 +1,7 @@
 <input type="hidden" id="user_id" value="<?php echo $userId ?>" />
 
 <div class="row">
-      <div class="col-md-3 text-center mb-3">
+      <div class="col-md-3 text-center mb-4">
 
             <div class="card ">
             <img class="card-img-top" src="<?php echo $userData['image'] ? $userData['image'] : base_url("public/images/nouser.png") ?>" alt="<?php echo $userData['first_name'], " ", $userData['last_name']?>" style="width:100%">
@@ -12,7 +12,7 @@
                 <p class="card-text ">
                     <ul class="text-left" style="list-style-type:square;">
                         <li class="mb-2">Let <?php echo $userData['first_name'], " ", $userData['last_name']?> know what do you think about him.</li>
-                        <li class="mb-2">Your comment will be posted anonymously.No Login Required</li>
+                        <li class="mb-2">Your comment will be posted anonymously. No Login Required</li>
                         <li class="mb-2">You can praise, criticize, abuse, blame <?php echo $userData['first_name'] ?></li>
                         <li><?php echo $userData['first_name'], " ", $userData['last_name']?> may choose to reply and publish your comment on his profile</li>
                     </ul>
@@ -31,7 +31,7 @@
                     <form action="<?php echo base_url('user/addthought') ?>" method="post" id="frmAddThought">
                         <div class="form-group">
                         <label for="comment" class="lead font-weight-bold">Your Review:</label>
-                        <textarea class="form-control" rows="2" id="comment" name="comment" placeholder="Write what do you think about <?php echo $userData['first_name'], " ", $userData['last_name']?>. Your comment will be completely anonymous. You can praise, criticize, abuse, blame about <?php echo $userData['first_name'] ?>."></textarea>
+                        <textarea class="form-control" rows="2" id="comment" name="comment" placeholder="Write what do you think about <?php echo $userData['first_name'], " ", $userData['last_name']?>. Your comment will be completely anonymous. You can praise, criticize, abuse, blame about <?php echo $userData['first_name'] ?>."  required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <input type="hidden" name="to_user_id" value="<?php echo $userId ?>" />

@@ -39,6 +39,7 @@ class Home extends CI_Controller {
 			}
 		}
 		//print_r($data); die();
+		$_SESSION['msg'] = array('body'=>"Sign up successfull, Please login.", status=>'success');
 		$this->db->insert('users', $data);
 		header("location:".base_url());
 	}
@@ -85,7 +86,7 @@ class Home extends CI_Controller {
 			array_push($arrThoughtIds, $post['thought_id']);
 
 			$shareURLCmnt = urlencode(base_url('user/'.$_SESSION['user']['user_id'].'/review/'.$post['thought_id']));
-			$shareTextprofile = "This is what people think about me. Checkout the anonymous comment posted on my profile...";
+			$shareTextprofile = "This is what people think about me. Checkout the anonymous comment posted on my profile.";
 			$socialShareUrls = array (
 				"facebook" 	=> "https://www.facebook.com/sharer/sharer.php?u=$shareURLCmnt",
 				"twitter" 	=> "https://twitter.com/intent/tweet?url=$shareURLCmnt&text=$shareTextprofile",
@@ -111,7 +112,7 @@ class Home extends CI_Controller {
 		$data['thoughtsData'] = $postData;
 
 		$shareURLprofile = urlencode(base_url('user/'.$_SESSION['user']['user_id']));
-		$shareTextprofile = "Let me know what do you think about myself by giving me anonymous review";
+		$shareTextprofile = "Let me know what do you think about me by giving me an anonymous comment.";
 		$data['shareUrl']['profile']['twitter'] = "https://twitter.com/intent/tweet?url=$shareURLprofile&text=$shareTextprofile";
 		$data['shareUrl']['profile']['facebook'] = "https://www.facebook.com/sharer/sharer.php?u=$shareURLprofile";
 		$data['shareUrl']['profile']['whatsapp'] = "whatsapp://send?text=".urlencode($shareTextprofile)."%20$shareURLprofile";

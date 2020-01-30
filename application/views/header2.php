@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row shadow-sm pb-2 pt-3 mb-3 border-bottom">
         <div class="col-lg-3 text-center mb-2">
-            <h3>Unsaidstuff</h3>
+            <h3>UnsaidStuff</h3>
         </div>
         
         <div class="col-lg-5 mb-2">
@@ -27,13 +27,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url("home/logout") ?>">Sign out</a>
                 </li>
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Profile</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<?php echo base_url("user/".$_SESSION['user']['user_id']) ?>">My Profile</a>
-                        <a class="dropdown-item" href="<?php echo base_url("home/logout") ?>">Sign out</a>
-                </li>-->
-            
             <?php } else { ?> 
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('login') ?>">Login</a>

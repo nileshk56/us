@@ -1,13 +1,11 @@
 <input type="hidden" id="user_id" value="<?php echo $_SESSION['user']['user_id'] ?>" />
 
 <div class="row">
-    <div class="col-md-3 text-center mb-3">
+    <div class="col-md-3 text-center mb-4">
           <div class="card ">
           <img class="card-img-top" src="<?php echo $_SESSION['user']['image'] ? $_SESSION['user']['image'] : base_url("public/images/nouser.png") ?>" alt="Card image" style="width:100%">
           <div class="card-body">
-              <?php if(!$_SESSION['user']['image']) { ?>
               <a href="#" class="card-link" id="btnUPP">Upload Photo</a><hr />
-              <?php } ?>
               <h4 class="card-title"><?php echo $_SESSION['user']['first_name'], " ", $_SESSION['user']['last_name'] ?></h4>
               <p class="card-text">Share profile on social network and ask your friends, colleague, relatives etc... to give your review anonymously</p>
               <button href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalShareProfile">Share Profile</button>
@@ -27,7 +25,7 @@
           foreach($thoughtsData as $thought) { 
           ?>
           <div class="row" id="thoughtPost<?php echo $thought['thought_id'] ?>">
-              <div class="col-md-12 text-justify">
+              <div class="col-md-12 text-left">
               <span class="lead font-weight-normal"><?php echo $thought['thought_text'] ?></span>
               <br>
               <em class="text-muted small"><?php echo date('M j Y g:i A', strtotime($thought['created']))  ?></em>
