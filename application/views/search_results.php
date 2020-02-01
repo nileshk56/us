@@ -13,7 +13,7 @@
                     <img src="<?php echo $user['image'] ? $user['image'] : base_url()."public/images/nouser.png"  ?>" class="img-fluid rounded" alt="<?php echo $user['first_name'], " ", $user['last_name'] ?>" width="75px" >
                 </div>
                 <div class="col-xs">
-                <h5> &nbsp; <a href="<?php echo base_url('user/'.$user['user_id']) ?>" class="text-body"><?php echo $user['first_name'], " ", $user['last_name'] ?></a></h5>
+                <h5> &nbsp; <a href="<?php echo base_url('u/'.$user['username']) ?>" class="text-body"><?php echo $user['first_name'], " ", $user['last_name'] ?></a></h5>
                 </div>
             </div>
             <?php } } else {?>

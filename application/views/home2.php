@@ -16,7 +16,7 @@
       <div class="col-md-6" id="divAllThoughts">
           <div class="row">
               <div class="col-md-12" id="divAddTag">
-                    <h3>People's Comments</h3>
+                    <h3>Comments</h3>
                     <hr>
               </div>
           </div>

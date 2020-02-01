@@ -55,3 +55,6 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'home/login';
 $route['user/(:num)'] = 'user/index/$1';
 $route['user/(:num)/review/(:num)'] = 'user/review/$1/$2';
+
+$route['u/(:any)'] = 'user/index/$1';
+$route['u/(:any)/r/(:num)'] = 'user/review/$1/$2';

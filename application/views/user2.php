@@ -11,27 +11,26 @@
                 <!--<p class="card-text">Let <?php echo $userData['first_name'], " ", $userData['last_name']?> know what do you think about him. <br><br>Your comment will be posted anonymously. <br><br>No Login Required. <br><br><?php echo $userData['first_name'], " ", $userData['last_name']?> may choose to publish your comment on the his profile</p>-->
                 <p class="card-text ">
                     <ul class="text-left" style="list-style-type:square;">
-                        <li class="mb-2">Let <?php echo $userData['first_name'], " ", $userData['last_name']?> know what do you think about him.</li>
+                        <li class="mb-2">Let <?php echo $userData['first_name'], " ", $userData['last_name']?> know what do you think about <?php echo $userData['gender'] == "M" ? "him" : "her"?>.</li>
                         <li class="mb-2">Your comment will be posted anonymously. No Login Required</li>
                         <li class="mb-2">You can praise, criticize, abuse, blame <?php echo $userData['first_name'] ?></li>
-                        <li><?php echo $userData['first_name'], " ", $userData['last_name']?> may choose to reply and publish your comment on his profile</li>
+                        <li><?php echo $userData['first_name'], " ", $userData['last_name']?> may choose to reply and publish the comment</li>
                     </ul>
                 </p>
                 
                 <a href="#" class="btn btn-primary" id="btnAddComment">Add Comment</a>
             </div>
             </div>
-
       </div>
         <div class="col-md-6">
             <div class="row" id="divAddThought">
                 <div class="col-md-12">
-                    <h3>People's Comment</h3>
+                    <h3>Comments</h3>
                     <hr />
                     <form action="<?php echo base_url('user/addthought') ?>" method="post" id="frmAddThought">
                         <div class="form-group">
                         <label for="comment" class="lead font-weight-bold">Your Review:</label>
-                        <textarea class="form-control" rows="2" id="comment" name="comment" placeholder="Write what do you think about <?php echo $userData['first_name'], " ", $userData['last_name']?>. Your comment will be completely anonymous. You can praise, criticize, abuse, blame about <?php echo $userData['first_name'] ?>."  required></textarea>
+                        <textarea class="form-control" rows="2" id="comment" name="comment" placeholder="Write what do you think about <?php echo $userData['first_name'], " ", $userData['last_name']?>. Your comment will be completely anonymous. You can praise, criticize, abuse, blame <?php echo $userData['first_name'] ?>."  required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <input type="hidden" name="to_user_id" value="<?php echo $userId ?>" />
@@ -48,7 +47,7 @@
             foreach($thoughtsData as $thought) { 
             ?>
             <div class="row" id="thoughtPost<?php echo $thought['thought_id'] ?>">
-                <div class="col-md-12 text-justify">
+                <div class="col-md-12 text-left">
                 <span class="lead font-weight-normal"><?php echo $thought['thought_text'] ?></span>
                 <br>
                 <em class="text-muted small"><?php echo date('M j Y g:i A', strtotime($thought['created']))  ?></em>

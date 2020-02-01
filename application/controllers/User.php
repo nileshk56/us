@@ -3,20 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
-    public function index($userId) {
+    public function index($username) {
 
-        $userId = $this->security->xss_clean($userId);
+        $username = $this->security->xss_clean($username);
 
         $arrThoughtIds = array();
 		$arrLikeData = array();
 		$arrCommentData = array();
         
-        $qr = "SELECT * FROM users u where u.user_id = " . $userId ;
+        $qr = "SELECT * FROM users u where u.username = '$username' "  ;
 		$query = $this->db->query($qr);
-		$userData = $query->result_array(); 
+        $userData = $query->result_array(); 
+        $userData = $userData[0];
 
 
-		$qr = "select t.*, c.comment_id, c.comment from thoughts t LEFT join comments c on t.thought_id = c.object_id where is_published = 1 AND t.to_user_id = " . $userId . " order by t.created desc ";
+		$qr = "select t.*, c.comment_id, c.comment from thoughts t LEFT join comments c on t.thought_id = c.object_id where is_published = 1 AND t.to_user_id = " . $userData['user_id'] . " order by t.created desc ";
 		$query = $this->db->query($qr);
 		$postData = $query->result_array(); 
 		
@@ -36,8 +37,8 @@ class User extends CI_Controller {
 			$postData[$postKey]['like_count'] = array_key_exists($post['thought_id'], $arrLikeData) ? $arrLikeData[$post['thought_id']] : 0;
         }*/
 
-        $data['userId'] = $userId;        
-        $data['userData'] = $userData[0];
+        $data['userId'] = $userData['user_id'];        
+        $data['userData'] = $userData;
         $data['thoughtsData'] = $postData;
         
 		$this->load->view('head');
@@ -163,7 +164,7 @@ class User extends CI_Controller {
         $thoughtsCountData = $query->result_array(); 
         //print_r($thoughtsCountData);
         if($thoughtsCountData[0]['thoughtCount'] >= 3) {
-            header(':', true, 400);
+            http_response_code(400);
 			echo json_encode(array( "msg" => "You have already commented" ));
 			return false;
         }
@@ -183,17 +184,19 @@ class User extends CI_Controller {
 
     }
 
-    public function review($userId, $reviewId) {
+    public function review($username, $reviewId) {
 
         $reviewId = $this->security->xss_clean($reviewId);
+        $username = $this->security->xss_clean($username);
 
         $arrThoughtIds = array();
 		$arrLikeData = array();
 		$arrCommentData = array();
         
-        $qr = "SELECT * FROM users u where u.user_id = " . $userId ;
+        $qr = "SELECT * FROM users u where u.user_id = '$username' ";
 		$query = $this->db->query($qr);
-		$userData = $query->result_array(); 
+        $userData = $query->result_array(); 
+        $userData = $userData[0];
 
 
 		$qr = "select t.*, c.comment_id, c.comment from thoughts t LEFT join comments c on t.thought_id = c.object_id where is_published = 1 AND t.thought_id = " . $reviewId . " order by t.created desc ";
@@ -216,8 +219,8 @@ class User extends CI_Controller {
 			$postData[$postKey]['like_count'] = array_key_exists($post['thought_id'], $arrLikeData) ? $arrLikeData[$post['thought_id']] : 0;
         }*/
 
-        $data['userId'] = $userId;        
-        $data['userData'] = $userData[0];
+        $data['userId'] = $$userData["user_id"];        
+        $data['userData'] = $userData;
         $data['thoughtsData'] = $postData;
         
 		$this->load->view('head');

@@ -19,6 +19,7 @@ class Home extends CI_Controller {
 		$data['status'] = "0";
 		$data['first_name'] = ucfirst($data['first_name']);
 		$data['last_name'] = ucfirst($data['last_name']);
+		$data['username'] = strtolower($data['first_name'] . $data['last_name'] . rand(1, 1000));
 
 		//check whether user exists or not
 		$query = $this->db->query("SELECT * FROM users where email = '" . $data['email'] . "'");
@@ -85,8 +86,8 @@ class Home extends CI_Controller {
 		foreach($postData as $key => $post) {
 			array_push($arrThoughtIds, $post['thought_id']);
 
-			$shareURLCmnt = urlencode(base_url('user/'.$_SESSION['user']['user_id'].'/review/'.$post['thought_id']));
-			$shareTextprofile = "This is what people think about me. Checkout the anonymous comment posted on my profile.";
+			$shareURLCmnt = urlencode(base_url('u/'.$_SESSION['user']['username'].'/r/'.$post['thought_id']));
+			$shareTextprofile = "Checkout what other people think about me.";
 			$socialShareUrls = array (
 				"facebook" 	=> "https://www.facebook.com/sharer/sharer.php?u=$shareURLCmnt",
 				"twitter" 	=> "https://twitter.com/intent/tweet?url=$shareURLCmnt&text=$shareTextprofile",
@@ -111,8 +112,8 @@ class Home extends CI_Controller {
 
 		$data['thoughtsData'] = $postData;
 
-		$shareURLprofile = urlencode(base_url('user/'.$_SESSION['user']['user_id']));
-		$shareTextprofile = "Let me know what do you think about me by giving me an anonymous comment.";
+		$shareURLprofile = urlencode(base_url('u/'.$_SESSION['user']['username']));
+		$shareTextprofile = "Checkout what other people think about me.";
 		$data['shareUrl']['profile']['twitter'] = "https://twitter.com/intent/tweet?url=$shareURLprofile&text=$shareTextprofile";
 		$data['shareUrl']['profile']['facebook'] = "https://www.facebook.com/sharer/sharer.php?u=$shareURLprofile";
 		$data['shareUrl']['profile']['whatsapp'] = "whatsapp://send?text=".urlencode($shareTextprofile)."%20$shareURLprofile";

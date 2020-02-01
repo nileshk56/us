@@ -14,32 +14,7 @@
 
       </div>
         <div class="col-md-6">
-            <!--<div class="row">
-                <div class="col-md-12">
-                    <ul class="nav nav-tabs nav-justified">
-                        <li class=" nav-item"><a class="nav-link active" href="http://localhost/tagged/">Add Tags</a></li>
-                        <li class=" nav-item"><a class="nav-link" href="http://localhost/tagged/home/thoughts">Thoughts about me</a></li>
-                    </ul>
-                    <br>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12" id="divAddTag">
-                    <form id="frmAddTag" action="http://localhost/tagged/home/add_tag" method="post">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-lg ui-autocomplete-input" placeholder="Add Tags" id="txtTag" name="txtTag" autocomplete="off">
-                            <div class="input-group-btn">
-                            <button class="btn btn-primary input-lg" type="submit" id="btnAddTag">
-                                Tag
-                            </button>
-                            </div>
-                        </div>
-                        <span class="help-block">Add tags on which you want to take the vote</span>
-                        <input type="hidden" value="1" name="user_id">
-                    </form>
-                    <hr> 
-                </div>
-            </div>-->
+            
             <div class="row">
                 <div class="col-md-6">
                     <h3>People's Comments</h3>

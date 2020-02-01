@@ -22,7 +22,7 @@
                     <a class="nav-link" href="<?php echo base_url() ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url("user/".$_SESSION['user']['user_id']) ?>">My Profile</a>
+                    <a class="nav-link" href="<?php echo base_url("u/".$_SESSION['user']['username']) ?>">My Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url("home/logout") ?>">Sign out</a>
