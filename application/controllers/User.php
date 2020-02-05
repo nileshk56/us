@@ -180,6 +180,31 @@ class User extends CI_Controller {
             $thoughtId = $this->db->insert_id();
         }
 
+        //send email
+        $query = $this->db->query("SELECT * FROM users where user_id = $toUserId");
+		$userData = $query->result_array(); 
+		
+		if(!empty($userData)) {
+			
+            $userData = $userData[0];
+            
+            $this->load->library('email');
+
+            $config['wordwrap'] = TRUE;
+            $config['mailtype'] = "html";
+
+            $this->email->initialize($config);
+
+            $this->email->from('info@unsaidstuff.com', 'unsaidstuff.com');
+            $this->email->to($userData['email']);
+            
+            $this->email->subject('Someone has commented on you profile.');
+            $msg = '<div><h3>Hello ' . $userData['first_name'] . " " . $userData['last_name'] . ',</h3><br><br> Someone has commented on your profile, Please <a href="' . base_url() . '"><b>Login</b></a> to checkout. <br><br>Thanks,<br>Unsaidstuff Team</div>';
+            $this->email->message($msg);
+            
+            $this->email->send();
+		}
+
         echo json_encode(array( "status" => "Success", "thoughtId" => $thoughtId ));
 
     }
@@ -193,7 +218,7 @@ class User extends CI_Controller {
 		$arrLikeData = array();
 		$arrCommentData = array();
         
-        $qr = "SELECT * FROM users u where u.user_id = '$username' ";
+        $qr = "SELECT * FROM users u where u.username = '$username' ";
 		$query = $this->db->query($qr);
         $userData = $query->result_array(); 
         $userData = $userData[0];
@@ -219,7 +244,7 @@ class User extends CI_Controller {
 			$postData[$postKey]['like_count'] = array_key_exists($post['thought_id'], $arrLikeData) ? $arrLikeData[$post['thought_id']] : 0;
         }*/
 
-        $data['userId'] = $$userData["user_id"];        
+        $data['userId'] = $userData["user_id"];        
         $data['userData'] = $userData;
         $data['thoughtsData'] = $postData;
         

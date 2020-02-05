@@ -1,22 +1,23 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-5 text-left" style="padding-top:50px">
-            <h1>What is Unsaidstuff</h1>
+        <div class="col-md-6 text-left" style="padding-top:30px">
+            <h1 class="display-4">What is Unsaidstuff</h1>
             <br>
             <h4><small>
-            <ul class="list-unstyled">
-                <li class="mb-3 text-justify">See what other people think about you by taking your anonymous review</li>
-                <li class="mb-3 text-justify">Reviews are completely private, no one can see them but you can publish good reviews on your profile. Others will see only published reviews on your profile.</li>
-                <li class="mb-3 text-justify">You can reply on review</li>
-                <li class="mb-3 text-justify">People will criticize you, abuse you, blame you but use that all feedback to improve yourself</li>
-                <li class="text-justify">Share your profile on social network and ask your friends, colleague, relatives to give your review anonymously</li>
+            <ul style="list-style-type:square;">
+                <li class="mb-3 text-left">Checkout what people are saying about you</li>
+                <li class="mb-3 text-left">You will get anonymous comments, comments will be completely private, No one can see your comments except you</li>
+                <li class="mb-3 text-left">If you want to show your favorite comment on your profile then you can choose to publish it</li>
+                <li class="mb-3 text-left">People may praise you, criticize you, abuse you, blame you but use that all feedback to improve yourself</li>
+                <li class="mb-3 text-left">You can reply on comments</li>
+                <li class="text-left">Share your profile on social media and ask your friends, colleague, relatives to give you comments anonymously</li>
             </ul></small>
             </h4>
         </div>
-        <div class="col-md-1">&nbsp;</div>
-        <div class="col-md-6" style="padding-top:50px">
-            <h1>Sign Up</h1>
+        
+        <div class="col-md-6" style="padding-top:30px">
+            <h1 class="display-4">Sign Up</h1>
             <br>
             <form action="<?php echo base_url("home/signup") ?>" method="post">
                 <div class=" form-group form-row">
@@ -52,7 +53,7 @@
                             </div>
                             <div class="form-check-inline">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="gender" value="M">Female
+                                <input type="radio" class="form-check-input" name="gender" value="F">Female
                             </label>
                         </div>
                     </div>

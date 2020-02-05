@@ -13,7 +13,7 @@ if(isset($_SESSION['msg']) && $_SESSION['msg']) {
 <div class="container-fluid">
   <div class="row shadow-sm p-md-4 mb-4 border ">
         <div class="col-md-1 text-center">&nbsp;</div>
-        <div class="col-md-3 text-left  ">
+        <div class="col-md-3 text-center  ">
             <h3>Unsaidstuff</h3>
         </div>
         
@@ -23,7 +23,7 @@ if(isset($_SESSION['msg']) && $_SESSION['msg']) {
             
             <input type="password" class="form-control mb-2 mr-sm-2" id="pwd" placeholder="Password" name="password" required>
              
-            <button type="submit" class="btn btn-primary mb-2">Login</button>
+            <button type="submit" class="btn btn-primary mb-2 ml-sm-2">Login</button>
           </form>
         </div>
         <div class="col-md-1 text-center">&nbsp;</div>
