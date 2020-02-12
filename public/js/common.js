@@ -66,9 +66,10 @@ $( document ).ready(function() {
     });
     
     $( "#divAllThoughts" ).on('click', '.publishThought', function() {
-        var thoughtId = $(this).data('thoughtid');
+        //var thoughtId = $(this).data('thoughtid');
+        var url = $(this).attr('href')
         $.ajax({
-            url : HOST + "home/publish/" + thoughtId,
+            url : url,
             type : 'GET',
             success : (data)=>{
                 $(this).removeClass("publishThought");
@@ -80,9 +81,10 @@ $( document ).ready(function() {
     });
 
     $( "#divAllThoughts" ).on('click', '.unpublishThought', function() {
-        var thoughtId = $(this).data('thoughtid');
+        //var thoughtId = $(this).data('thoughtid');
+        var url = $(this).attr('href')
         $.ajax({
-            url : HOST + "home/unpublish/" + thoughtId,
+            url : url,
             type : 'GET',
             success : (data)=> {
                 $(this).removeClass("unpublishThought");
