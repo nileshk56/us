@@ -1,22 +1,15 @@
-<input type="hidden" id="user_id" value="<?php echo $userId ?>" />
+<input type="hidden" id="company_id" value="<?php echo $companyId ?>" />
 
 <div class="row">
       <div class="col-md-3 text-center mb-4">
 
             <div class="card ">
-            <img class="card-img-top" src="<?php echo $userData['image'] ? $userData['image'] : base_url("public/images/nouser.png") ?>" alt="<?php echo $userData['first_name'], " ", $userData['last_name']?>" style="width:100%">
+            <img class="card-img-top" src="<?php echo $userData['image'] ? $userData['image'] : base_url("public/images/nologo.png") ?>" alt="<?php echo $userData['company_name']?>" style="width:100%">
             <div class="card-body">
-                <h4 class="card-title"><?php echo $userData['first_name'], " ", $userData['last_name']?></h4>
+                <h4 class="card-title"><?php echo $userData['company_name']?></h4>
                 <hr />
-                <!--<p class="card-text">Let <?php echo $userData['first_name'], " ", $userData['last_name']?> know what do you think about him. <br><br>Your comment will be posted anonymously. <br><br>No Login Required. <br><br><?php echo $userData['first_name'], " ", $userData['last_name']?> may choose to publish your comment on the his profile</p>-->
                 <p class="card-text ">
-                    <!--<ul class="text-left" style="list-style-type:square;">
-                        <li class="mb-2">Let <?php echo $userData['first_name'], " ", $userData['last_name']?> know what do you think about <?php echo $userData['gender'] == "M" ? "him" : "her"?>.</li>
-                        <li class="mb-2">Ysour comment will be posted anonymously. No Login Required</li>
-                        <li class="mb-2">You can praise, criticize, abuse, blame <?php echo $userData['first_name'] ?></li>
-                        <li><?php echo $userData['first_name'], " ", $userData['last_name']?> may choose to reply and publish the comment</li>
-                    </ul>-->
-                    Give anonymous feedback, review, message to <?php echo $userData['first_name'], " ", $userData['last_name']?>. <br>No Login Required.
+                    Give anonymous feedback, review, complaints to <?php echo $userData['company_name']?>. <br>No Login Required.
                 </p>
                 
                 <a href="#" class="btn btn-primary" id="btnAddComment">Add Comment</a>
@@ -28,13 +21,13 @@
                 <div class="col-md-12">
                     <h3>Comments</h3>
                     <hr />
-                    <form action="<?php echo base_url('user/addthought') ?>" method="post" id="frmAddThought">
+                    <form action="<?php echo base_url('company/addthought') ?>" method="post" id="frmAddThought">
                         <div class="form-group">
-                        <label for="comment" class="lead font-weight-bold">Your Review:</label>
-                        <textarea class="form-control" rows="2" id="comment" name="comment" placeholder="Write what do you think about <?php echo $userData['first_name'], " ", $userData['last_name']?>. Your comment will be completely anonymous. You can praise, criticize, abuse, blame <?php echo $userData['first_name'] ?>."  required></textarea>
+                        <label for="comment" class="lead font-weight-bold">Your Feedback:</label>
+                        <textarea class="form-control" rows="2" id="comment" name="comment" placeholder="Give anonymous feedback, review, complaints to <?php echo $userData['company_name']?>."  required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <input type="hidden" name="to_user_id" value="<?php echo $userId ?>" />
+                        <input type="hidden" name="to_company_id" value="<?php echo $companyId ?>" />
                     </form>
                     <br />
                     <hr />
@@ -58,7 +51,7 @@
                 
                 <div class="row" style="padding:10px">
                   <div class="col-md-12 ">
-                  <b><?php echo $userData['first_name'], " ", $userData['last_name']?>'s reply </b> <br/>
+                  <b><?php echo $userData['company_name']?>'s reply </b> <br/>
                   <?php echo $thought['comment']?>
                   </div>
                 </div>

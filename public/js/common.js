@@ -66,13 +66,15 @@ $( document ).ready(function() {
     });
     
     $( "#divAllThoughts" ).on('click', '.publishThought', function() {
-        var thoughtId = $(this).data('thoughtid');
+        //var thoughtId = $(this).data('thoughtid');
+        var url = $(this).attr('href')
         $.ajax({
-            url : HOST + "home/publish/" + thoughtId,
+            url : url,
             type : 'GET',
             success : (data)=>{
                 $(this).removeClass("publishThought");
                 $(this).addClass("unpublishThought");
+                $(this).attr('href', url.replace("publish", "unpublish"));
                 $(this).html("Unpublish");
             }
         }); 
@@ -80,13 +82,15 @@ $( document ).ready(function() {
     });
 
     $( "#divAllThoughts" ).on('click', '.unpublishThought', function() {
-        var thoughtId = $(this).data('thoughtid');
+        //var thoughtId = $(this).data('thoughtid');
+        var url = $(this).attr('href')
         $.ajax({
-            url : HOST + "home/unpublish/" + thoughtId,
+            url : url,
             type : 'GET',
             success : (data)=> {
                 $(this).removeClass("unpublishThought");
                 $(this).addClass("publishThought");
+                $(this).attr('href', url.replace("unpublish", "publish"));
                 $(this).html("Publish")
             }
         }); 
@@ -108,8 +112,10 @@ $( document ).ready(function() {
         }
 
         var thoughtId = $(this).data('thoughtid');
+        var url = $(this).attr("href");
         $.ajax({
-            url : HOST + "home/deletethought/" + thoughtId,
+            //url : HOST + "home/deletethought/" + thoughtId,
+            url : url,
             type : 'GET',
             success : (data)=> {
                 $("#thoughtPost"+thoughtId).hide()
@@ -127,9 +133,11 @@ $( document ).ready(function() {
             return false;
         }
 
-        var replyId = $(this).data('replyid');
+        //var replyId = $(this).data('replyid');
+        var url = $(this).attr("href")
         $.ajax({
-            url : HOST + "home/deletereply/" + replyId,
+            //url : HOST + "home/deletereply/" + replyId,
+            url : url,
             type : 'GET',
             success : (data)=> {
                 $(this).parent().hide()

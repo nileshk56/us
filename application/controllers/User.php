@@ -42,7 +42,11 @@ class User extends CI_Controller {
         $data['thoughtsData'] = $postData;
         
 		$this->load->view('head');
-		$this->load->view('header2');
+		if(isset($_SESSION['user']['company_id'])) {
+			$this->load->view('c-header');
+		} else {
+			$this->load->view('header2');
+		}
         $this->load->view('user2', $data);
         $this->load->view('footer', $data);
     }

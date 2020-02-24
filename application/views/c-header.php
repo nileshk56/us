@@ -5,9 +5,9 @@
         </div>
         
         <div class="col-lg-5 mb-2">
-            <form class="form-inline" action="<?php echo base_url('home/search') ?>">
+            <form class="form-inline" action="<?php echo base_url('company/search') ?>">
                 <div class="input-group col-12 pl-md-0">
-                    <input type="text" class="form-control" placeholder="Search People or companies by name" name="search">
+                    <input type="text" class="form-control" placeholder="Search companies by name" name="search">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit"><i class="fas fa-search fa-lg"></i></button>
                     </div>
@@ -19,10 +19,10 @@
             <?php if(!empty($_SESSION['user'])) { ?>
             
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url() ?>">Home</a>
+                    <a class="nav-link" href="<?php echo base_url("/company") ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url("u/".$_SESSION['user']['username']) ?>">My Profile</a>
+                    <a class="nav-link" href="<?php echo base_url("company/".$_SESSION['user']['company_id']) ?>" data-toggle="tooltip" title="This is how your page will be visible to public">Company's Page</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url("home/logout") ?>">Sign out</a>
