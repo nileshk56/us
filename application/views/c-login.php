@@ -9,15 +9,15 @@
             </h3>
             <br>
             <h3>
-                <small>Take Anonymous feedback, review or complaints from your employees.</small>
+                <small>Take anonymous feedback, review or complaints from your employees.</small>
             </h3>
             <br>
             <h3>
-                <small>Give reply on the feedback</small>
+                <small>Give reply on the feedback.</small>
             </h3>
             <br>
             <h3>
-                <small>Publish the appropriate feedback to the world</small>
+                <small>Publish the appropriate feedback to the world.</small>
             </h3>
         </div>
         <div class="col-md-1 text-left" ></div>

@@ -4,12 +4,12 @@
       <div class="col-md-3 text-center mb-4">
 
             <div class="card ">
-            <img class="card-img-top" src="<?php echo $userData['image'] ? $userData['image'] : base_url("public/images/nouser.png") ?>" alt="<?php echo $userData['company_name']?>" style="width:100%">
+            <img class="card-img-top" src="<?php echo $userData['image'] ? $userData['image'] : base_url("public/images/nologo.png") ?>" alt="<?php echo $userData['company_name']?>" style="width:100%">
             <div class="card-body">
                 <h4 class="card-title"><?php echo $userData['company_name']?></h4>
                 <hr />
                 <p class="card-text ">
-                    Give anonymous feedback, review, complaints to <?php echo $userData['company_name']?>
+                    Give anonymous feedback, review, complaints to <?php echo $userData['company_name']?>. <br>No Login Required.
                 </p>
                 
                 <a href="#" class="btn btn-primary" id="btnAddComment">Add Comment</a>

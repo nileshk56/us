@@ -10,12 +10,13 @@
                 <hr />
                 <!--<p class="card-text">Let <?php echo $userData['first_name'], " ", $userData['last_name']?> know what do you think about him. <br><br>Your comment will be posted anonymously. <br><br>No Login Required. <br><br><?php echo $userData['first_name'], " ", $userData['last_name']?> may choose to publish your comment on the his profile</p>-->
                 <p class="card-text ">
-                    <ul class="text-left" style="list-style-type:square;">
+                    <!--<ul class="text-left" style="list-style-type:square;">
                         <li class="mb-2">Let <?php echo $userData['first_name'], " ", $userData['last_name']?> know what do you think about <?php echo $userData['gender'] == "M" ? "him" : "her"?>.</li>
-                        <li class="mb-2">Your comment will be posted anonymously. No Login Required</li>
+                        <li class="mb-2">Ysour comment will be posted anonymously. No Login Required</li>
                         <li class="mb-2">You can praise, criticize, abuse, blame <?php echo $userData['first_name'] ?></li>
                         <li><?php echo $userData['first_name'], " ", $userData['last_name']?> may choose to reply and publish the comment</li>
-                    </ul>
+                    </ul>-->
+                    Give anonymous feedback, review, message to <?php echo $userData['first_name'], " ", $userData['last_name']?>. <br>No Login Required.
                 </p>
                 
                 <a href="#" class="btn btn-primary" id="btnAddComment">Add Comment</a>

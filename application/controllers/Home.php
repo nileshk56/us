@@ -187,9 +187,12 @@ class Home extends CI_Controller {
 		if(!empty($arrSearchTxt[1])) {
 			$qr .= " AND (first_name = '" . $arrSearchTxt[1] . "' OR last_name = '" . $arrSearchTxt[1] . "')";
 		}
-		
 		$query = $this->db->query($qr);
-		$data = array("userData" => $query->result_array(), "searchText"=>$searchText); 
+
+		$cqr = "SELECT * FROM companies WHERE company_name like '%$searchText%'";
+		$cquery = $this->db->query($cqr);
+
+		$data = array("userData" => $query->result_array(), "companyData" => $cquery->result_array() , "searchText"=>$searchText); 
 
 		$this->load->view('head');
 		$this->load->view('header2');
@@ -302,5 +305,39 @@ class Home extends CI_Controller {
 		$this->db->delete('comments', array('comment_id' => $replyId));
 		echo json_encode(array( "status" => "Success" ));
 		
+	}
+
+	public function openfeed() {
+		$this->load->view('head');
+		$this->load->view('openfeed');	
+	}
+
+	public function addopenfeed() {
+		$ip = $_SERVER['REMOTE_ADDR'];
+        
+        $qr = "SELECT count(*) as thoughtCount FROM open_feedback WHERE ip = '$ip'" ;
+
+        $query = $this->db->query($qr);
+        $thoughtsCountData = $query->result_array(); 
+        //print_r($thoughtsCountData);
+        if($thoughtsCountData[0]['thoughtCount'] >= 3) {
+			$_SESSION["msg"] =  "Feedback already given.";
+			header("location:".base_url("openfeed"));
+			return false;
+        }
+
+        $data = array(
+            "company_name" => strip_tags( $this->security->xss_clean($this->input->post('company_name')) ),
+            "company_feedback" => strip_tags( $this->security->xss_clean($this->input->post('company_feedback')) ),
+            "ip" => $ip,
+        );
+
+        if($this->db->insert('open_feedback', $data)) {
+            $feedbackId = $this->db->insert_id();
+		}
+		
+		$_SESSION["msg"] =  "Your feedback is submitted anonymously.";
+		header("location:".base_url("openfeed"));
+	
 	}
 }

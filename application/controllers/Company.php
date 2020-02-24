@@ -25,7 +25,7 @@ class Company extends CI_Controller {
 		if(!empty($userData)) {
             
             $_SESSION['msg'] = array('body'=>'Company already Exists!', status=>'fail');
-            header("location:".base_url("login"));
+            header("location:".base_url("company/login"));
             return false;
 
 			/*if($userData[0]['status'] == 1){
@@ -67,7 +67,7 @@ class Company extends CI_Controller {
 
 		} else {
 			$_SESSION['msg'] = array('body'=>'Wrong email or password', status=>'fail');
-			header("location:".base_url("login"));
+			header("location:".base_url("company/login"));
 			return false;
 		}		
 	}
@@ -113,8 +113,8 @@ class Company extends CI_Controller {
 
 		$data['thoughtsData'] = $postData;
 
-		$shareURLprofile = urlencode(base_url('u/'.$_SESSION['user']['company_id']));
-		$shareTextprofile = "Checkout what other people think about me.";
+		$shareURLprofile = urlencode(base_url('company/'.$_SESSION['user']['company_id']));
+		$shareTextprofile = "Give us your anonymous feedback.";
 		$data['shareUrl']['profile']['twitter'] = "https://twitter.com/intent/tweet?url=$shareURLprofile&text=$shareTextprofile";
 		$data['shareUrl']['profile']['facebook'] = "https://www.facebook.com/sharer/sharer.php?u=$shareURLprofile";
 		$data['shareUrl']['profile']['whatsapp'] = "whatsapp://send?text=".urlencode($shareTextprofile)."%20$shareURLprofile";
@@ -129,16 +129,14 @@ class Company extends CI_Controller {
 		$searchText = $this->security->xss_clean($this->input->get('search'));
 		$arrSearchTxt = explode(" ", $searchText);
 
-		$qr = "SELECT * FROM users WHERE (first_name = '" . $arrSearchTxt[0] . "' OR last_name = '" . $arrSearchTxt[0] . "')";
-		if(!empty($arrSearchTxt[1])) {
-			$qr .= " AND (first_name = '" . $arrSearchTxt[1] . "' OR last_name = '" . $arrSearchTxt[1] . "')";
-		}
 		
-		$query = $this->db->query($qr);
-		$data = array("userData" => $query->result_array(), "searchText"=>$searchText); 
+		$cqr = "SELECT * FROM companies WHERE company_name like '%$searchText%'";
+		$cquery = $this->db->query($cqr);
 
-		$this->load->view('head');
-		$this->load->view('header2');
+		$data = array("companyData" => $cquery->result_array() , "searchText"=>$searchText); 
+
+		$this->load->view('c-head');
+		$this->load->view('c-header');
 		$this->load->view('search_results', $data);
 		$this->load->view('footer', $data);
 
@@ -162,7 +160,7 @@ class Company extends CI_Controller {
 		}
 
 		move_uploaded_file($_FILES['upp']['tmp_name'], $file_location);
-		$this->db->update('companies', array("image" => $location), "user_id=" . $_SESSION['user']['company_id']);
+		$this->db->update('companies', array("image" => $location), "company_id=" . $_SESSION['user']['company_id']);
 		$_SESSION['user']['image'] = $location;
 		header("location:".base_url("company"));
     }
@@ -227,14 +225,14 @@ class Company extends CI_Controller {
     
 	public function deletethought($thoughId) {
 
-		$this->db->delete('thoughts', array('thought_id' => $thoughId));
+		$this->db->delete('company_thoughts', array('thought_id' => $thoughId));
 		echo json_encode(array( "status" => "Success" ));
 
 	}
 
 	public function deletereply($replyId) {
 
-		$this->db->delete('comments', array('comment_id' => $replyId));
+		$this->db->delete('company_comments', array('comment_id' => $replyId));
 		echo json_encode(array( "status" => "Success" ));
 		
     }
@@ -278,8 +276,12 @@ class Company extends CI_Controller {
         $data['thoughtsData'] = $postData;
         
 		$this->load->view('c-head');
-		$this->load->view('c-header');
-        $this->load->view('c-user', $data);
+		if(isset($_SESSION['user']['company_id'])) {
+			$this->load->view('c-header');
+		} else {
+			$this->load->view('header2');
+		}
+		        $this->load->view('c-user', $data);
         $this->load->view('footer', $data);
     }
 

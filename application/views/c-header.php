@@ -5,9 +5,9 @@
         </div>
         
         <div class="col-lg-5 mb-2">
-            <form class="form-inline" action="<?php echo base_url('home/search') ?>">
+            <form class="form-inline" action="<?php echo base_url('company/search') ?>">
                 <div class="input-group col-12 pl-md-0">
-                    <input type="text" class="form-control" placeholder="Search by Firstname Lastname" name="search">
+                    <input type="text" class="form-control" placeholder="Search companies by name" name="search">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit"><i class="fas fa-search fa-lg"></i></button>
                     </div>

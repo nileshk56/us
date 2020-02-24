@@ -31,7 +31,7 @@
               <em class="text-muted small"><?php echo date('M j Y g:i A', strtotime($thought['created']))  ?></em>
               <br>
               <br>
-              <?php if($thought['is_published'] == 0) { ?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="publishThought">Publish</a><?php } else { ?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="unpublishThought">Unpublish</a><?php } ?> &nbsp; <a href="#" class="btnShareCmnt" data-socialshareurls='<?php echo $thought['socialShareUrls'] ?>'>Share</a> &nbsp; <?php if(!$thought['comment']) {?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="replyThought">Reply</a><?php } ?> &nbsp; <a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="deleteThought">Delete</a>  
+              <?php if($thought['is_published'] == 0) { ?><a href="<?php echo base_url("home/publish")."/".$thought['thought_id'] ?>" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="publishThought">Publish</a><?php } else { ?><a href="<?php echo base_url("home/unpublish")."/".$thought['thought_id'] ?>" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="unpublishThought">Unpublish</a><?php } ?> &nbsp; <a href="#" class="btnShareCmnt" data-socialshareurls='<?php echo $thought['socialShareUrls'] ?>'>Share</a> &nbsp; <?php if(!$thought['comment']) {?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="replyThought">Reply</a><?php } ?> &nbsp; <a href="<?php echo base_url("home/deletethought")."/".$thought['thought_id'] ?>" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="deleteThought">Delete</a>  
               <br/>
               <?php if($thought['comment']) {?>
               
@@ -39,7 +39,7 @@
                 <div class="col-md-12 ">
                   <b>Your Reply</b><br/>
                   <?php echo $thought['comment'] ?><br>
-                  <a href="#" data-replyid = "<?php echo $thought['comment_id'] ?>"  class="deleteReply small">Delete Reply</a>
+                  <a href="<?php echo base_url("home/deletereply")."/".$thought['comment_id'] ?>" data-replyid = "<?php echo $thought['comment_id'] ?>"  class="deleteReply small">Delete Reply</a>
                 </div>
               </div>
               <?php } else {?>

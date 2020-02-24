@@ -60,3 +60,5 @@ $route['u/(:any)'] = 'user/index/$1';
 $route['u/(:any)/r/(:num)'] = 'user/review/$1/$2';
 
 $route['company/(:num)'] = 'company/publicpage/$1';
+$route['openfeed'] = 'home/openfeed';
+

@@ -7,7 +7,7 @@
           <div class="card-body">
               <a href="#" class="card-link" id="btnUPP">Upload Photo</a><hr />
               <h4 class="card-title"><?php echo $_SESSION['user']['company_name'] ?></h4>
-              <p class="card-text">Copy the below url and share with your employees to receive the feedback.<br><span class="font-weight-bolder font-italic"><?php echo  base_url('companies/'.$_SESSION['user']['company_id']) ?></span><br><h6>Or </h6> Share this page on social network and ask others to give you feedback anonymously</p>
+              <p class="card-text">Copy the below url and share with your employees to get the feedback.<br><span class="font-weight-bolder font-italic"><?php echo  base_url('company/'.$_SESSION['user']['company_id']) ?></span><br><h6>Or </h6> Share this page on social network to get the feedback anonymously.</p>
               <button href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalShareProfile">Share Profile</button>
           </div>
           </div>
@@ -31,7 +31,7 @@
               <em class="text-muted small"><?php echo date('M j Y g:i A', strtotime($thought['created']))  ?></em>
               <br>
               <br>
-              <?php if($thought['is_published'] == 0) { ?><a href="<?php echo base_url("company/publish")."/".$thought['thought_id'] ?>" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="publishThought">Publish</a><?php } else { ?><a href="<?php echo base_url("company/unpublish")."/".$thought['thought_id'] ?>" class="unpublishThought">Unpublish</a><?php } ?> &nbsp; <a href="#" class="btnShareCmnt" data-socialshareurls='<?php echo $thought['socialShareUrls'] ?>'>Share</a> &nbsp; <?php if(!$thought['comment']) {?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="replyThought">Reply</a><?php } ?> &nbsp; <a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="deleteThought">Delete</a>  
+              <?php if($thought['is_published'] == 0) { ?><a href="<?php echo base_url("company/publish")."/".$thought['thought_id'] ?>" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="publishThought">Publish</a><?php } else { ?><a href="<?php echo base_url("company/unpublish")."/".$thought['thought_id'] ?>" class="unpublishThought">Unpublish</a><?php } ?> &nbsp; <!--<a href="#" class="btnShareCmnt" data-socialshareurls='<?php echo $thought['socialShareUrls'] ?>'>Share</a> &nbsp; --><?php if(!$thought['comment']) {?><a href="#" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="replyThought">Reply</a><?php } ?> &nbsp; <a href="<?php echo base_url("company/deletethought")."/".$thought['thought_id'] ?>" data-thoughtid="<?php echo $thought['thought_id'] ?>" class="deleteThought">Delete</a>  
               <br/>
               <?php if($thought['comment']) {?>
               
@@ -39,7 +39,7 @@
                 <div class="col-md-12 ">
                   <b>Your Reply</b><br/>
                   <?php echo $thought['comment'] ?><br>
-                  <a href="#" data-replyid = "<?php echo $thought['comment_id'] ?>"  class="deleteReply small">Delete Reply</a>
+                  <a href="<?php echo base_url("company/deletereply")."/".$thought['comment_id'] ?>" data-replyid = "<?php echo $thought['comment_id'] ?>"  class="deleteReply small">Delete Reply</a>
                 </div>
               </div>
               <?php } else {?>
@@ -65,7 +65,7 @@
           ?>
             <div class="row">
               <div class="col-md-12 text-danger">
-                <h4>No comments yet. Share your profile to get comments</h4>
+                <h4>No comments yet. Copy the below url and share with your employees to get the feedback.<br><span class="font-weight-bolder font-italic"><?php echo  base_url('company/'.$_SESSION['user']['company_id']) ?></span></h4>
               </div>
             </div>
           <?php } ?>
@@ -120,7 +120,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Upload Profile Photo</h4>
+        <h4 class="modal-title">Upload Company Logo</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body" id="modalVoteDetailsBody">

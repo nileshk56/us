@@ -4,16 +4,21 @@
         <div class="col-md-6 text-left" style="padding-top:30px">
             <h1 class="display-4">What is Unsaidstuff</h1>
             <br>
-            <h4><small>
-            <ul style="list-style-type:square;">
-                <li class="mb-3 text-left">Checkout what people are saying about you</li>
-                <li class="mb-3 text-left">You will get anonymous comments, comments will be completely private, No one can see your comments except you</li>
-                <li class="mb-3 text-left">If you want to show your favorite comment on your profile then you can choose to publish it</li>
-                <li class="mb-3 text-left">People may praise you, criticize you, abuse you, blame you but use that all feedback to improve yourself</li>
-                <li class="mb-3 text-left">You can reply on comments</li>
-                <li class="text-left">Share your profile on social media and ask your friends, colleague, relatives to give you comments anonymously</li>
-            </ul></small>
-            </h4>
+            <h3>
+                <small>Anonymous messaging, feedback and review platform.</small>
+            </h3>
+            <br>
+            <h3>
+                <small>Take anonymous feedback, review or complaints from people you know.</small>
+            </h3>
+            <br>
+            <h3>
+                <small>Give reply on the feedback.</small>
+            </h3>
+            <br>
+            <h3>
+                <small>Publish the appropriate feedback to the world.</small>
+            </h3>
         </div>
         
         <div class="col-md-6" style="padding-top:30px">
