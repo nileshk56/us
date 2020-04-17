@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-md-6 text-left" style="padding-top:30px">
-            <h1 class="display-4">What is Unsaidstuff</h1>
+            <h1 class="display-4">What is Critic's Web</h1>
             <br>
             <h3>
                 <small>Anonymous messaging, feedback and review platform.</small>
@@ -74,7 +74,8 @@
 
     <div class="row ">
         <div class="col-md-12 text-center p-2 mt-5 mb-0 p-md-2 border-top text-muted">
-            Unsaidstuff.com@2020
+            Critic's Web@2020
         </div>
+      </div> 
     </div>
 </div>

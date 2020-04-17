@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-md-5 text-left" style="padding-top:30px">
-            <h1 class="display-4">Unsaidstuff for companies</h1>
+            <h1 class="display-4">Critic's Web for companies</h1>
             <br>
             <h3>
                 <small>Anonymous messaging, feedback and review platform for companies.</small>

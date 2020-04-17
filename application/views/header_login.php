@@ -13,7 +13,7 @@ if(isset($_SESSION['msg']) && $_SESSION['msg']) {
 <div class="container-fluid">
   <div class="row shadow-sm p-md-4 mb-4 border ">
         <div class="col-md-3 text-center  ">
-            <h3>Unsaidstuff</h3>
+            <h3>Critic's Web</h3>
         </div>
         
         <div class="col-md-7 ">
@@ -25,6 +25,6 @@ if(isset($_SESSION['msg']) && $_SESSION['msg']) {
             <button type="submit" class="btn btn-primary mb-2 ml-sm-2">Login</button>
           </form>
         </div>
-        <div class="col-md-2 text-left pt-2"><a href="<?php echo base_url("company/login") ?>">Company Login</a></div>
+        <div class="col-md-2 text-left pt-2"><a href="<?php echo base_url("company/login") ?>">For Businesses</a></div>
   </div>  
 </div>

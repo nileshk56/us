@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row shadow-sm pb-2 pt-3 mb-3 border-bottom">
         <div class="col-lg-3 text-center mb-2">
-            <h3>UnsaidStuff</h3>
+            <h3>Critic's Web</h3>
         </div>
         
         <div class="col-lg-5 mb-2">
